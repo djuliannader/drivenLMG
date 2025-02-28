@@ -11,6 +11,7 @@ For the stationary states of the time-independent LMG manipulate parameters at f
 
 ```bash
 julia main_LMG.jl
+```
 
 
 Cite as: D. Nader, C. Gonzalez-Rodrıguez, and S. Lerma-Hernandez, Avoided crossings and dynamical tunneling
