@@ -1,0 +1,51 @@
+push!(LOAD_PATH, pwd())
+using LinearAlgebra
+using QuantumOptics
+import diagonalization
+import troterization
+import wigner
+import statistics
+
+
+# ----- Imput parameters  ----
+k = 1                      # state of interest
+J=50                       # System size
+ep=1.0                     # LMG parameter
+gx=-3.0                    # LMG parameter
+gy=-9.0                    # LMG parameter
+NN=100                     # Size of the Grid
+name1="wignertest0.dat"     # Wigner output file
+name2="husimitest0.dat"     # Husimi output file
+# ------------------------- ----
+
+
+#---------------- Main body -----------------------
+#--------------------------------------------------
+#---------  Building Floquet operator -------------#
+HH0 = diagonalization.matrixH00(J,ep,gx,gy)
+ev0 = eigvals(HH0)
+states = eigvecs(HH0)
+println("-> Eigenstates obtained")
+# building state for QuantumOptics library
+liststate = [states[i,k] for i in 1:(2*J+1)]
+psi = wigner.buildingstate(liststate,J)
+# calculating Husimi and Wigner using Quantum optics library
+htest = wigner.husimif(psi,NN,name2)
+println("-> Husimi function obtained")
+wtest = wigner.wignerf(psi,NN,name1)
+println("-> Wigner function obtained")
+#------------------------------------------------------
+
+
+
+# ----  Printing results ------------
+println("----- Results ----------")
+println("LMG stationary state: ",k)
+println("<E_k|H0|E_k>/J: ",ev0[k]/J)
+println("Go to file ",name2," for Husimi function")
+println("Go to file ",name1," for Wigner function")
+println("-----------------------" )
+#-------------------------------------
+
+
+
