@@ -135,19 +135,19 @@ function expectation(J,ep,gx,gy,chi,T,k)
 #end
 
 
-#J=200
+#J=50
 #ep=1.0
-#gx=2.0
-#gy=0.0
+#gx=-0.95
+#gy=3*gx
 #nu=1
 #N=20
-#chi=0.05
+#chi=0.001
 
 #open("resonances.dat","w") do io
 
 #T=0.1
 #tint = 0.01
-#Nmax=500
+#Nmax=400
 #for ik in 1:Nmax
 #   test1 = expectation(J,ep,gx,gy,chi,T,1)
 #   test2 = expectation(J,ep,gx,gy,chi,T,2)
@@ -155,6 +155,7 @@ function expectation(J,ep,gx,gy,chi,T,k)
 #   test4 = expectation(J,ep,gx,gy,chi,T,4)
 #   test5 = expectation(J,ep,gx,gy,chi,T,5)
 #   println(io,T," ",test1[2]," ",test2[2]," ",test3[2]," ",test4[2]," ",test5[2])
+#   println(io,T," ",test1[2])
 #   println(ik/Nmax)
 #   T=T+tint
 #end

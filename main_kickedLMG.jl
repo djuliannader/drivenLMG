@@ -11,10 +11,10 @@ import statistics
 k = 1                      # state of interest
 J=50                       # System size
 ep=1.0                     # LMG parameter
-gx=-3.0                    # LMG parameter
-gy=-9.0                    # LMG parameter
-epsilon = 0.0              # strength of the Kick
-tau = 1.0                  # period of the kick
+gx=-0.95                   # LMG parameter
+gy= 3*gx                   # LMG parameter
+epsilon = 0.001            # strength of the Kick
+tau = 2.89134              # period of the kick
 NN=100                     # Size of the Grid
 name1="wignertest.dat"     # Wigner output file
 name2="husimitest.dat"     # Husimi output file
@@ -51,6 +51,21 @@ fexpval = real(psift*HH0*psif)
 #------------------------------------------------------
 
 
+#
+#open("resonances.dat","w") do io
+#T=0.1
+#tint = 0.01
+#Nmax=400
+#for ik in 1:Nmax
+#   test1 = statistics.expectation(J,ep,gx,gy,epsilon,T,1)
+#   println(io,T," ",test1[2])
+#   println(ik/Nmax)
+#   T=T+tint
+#end
+
+#end
+
+println("See file resonances.dat for expectation value vs tau")
 
 # ----  Printing results ------------
 println("----- Results ----------")

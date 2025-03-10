@@ -11,8 +11,8 @@ import statistics
 k = 1                      # state of interest
 J=50                       # System size
 ep=1.0                     # LMG parameter
-gx=-3.0                    # LMG parameter
-gy=-9.0                    # LMG parameter
+gx=0.75                    # LMG parameter
+gy=0.0                    # LMG parameter
 NN=100                     # Size of the Grid
 name1="wignertest.dat"     # Wigner output file
 name2="husimitest.dat"     # Husimi output file
