@@ -29,7 +29,7 @@ function matrixH00(J,ep,gx,gy)
       w=ep*(gx+gy)/(2.0*(2.0*J-1.0))
       diagz=[m for m in -J:J]
       diag0=[0.0 for i in -J:J]
-      diagar = [0 for m in -J:J-1]
+      diagar = [0.0 for m in -J:J-1]
       diagab = [(J*(J+1)-(m*(m+1)))^(1/2) for m in -J:J-1]
       sigzop= Diagonal(diagz)
       sigplusop = Tridiagonal(diagar,diag0,diagab)
@@ -46,7 +46,7 @@ end
 
 function matrixJx(J)
      diag0=[0.0 for i in -J:J]
-     diagar = [0 for m in -J:J-1]
+     diagar = [0.0 for m in -J:J-1]
      diagab = [(J*(J+1)-(m*(m+1)))^(1/2) for m in -J:J-1]
      sigplusop = Tridiagonal(diagar,diag0,diagab)
      sigminusop = transpose(sigplusop)

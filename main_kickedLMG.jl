@@ -46,7 +46,7 @@ wtest = wigner.wignerf(psi,NN,name1)
 println("-> Wigner function obtained")
 # calculating <F_k|H0|F_k>
 psif = listvec
-psift = transpose(psif)
+psift = conj(transpose(psif))
 fexpval = real(psift*HH0*psif)
 #------------------------------------------------------
 
