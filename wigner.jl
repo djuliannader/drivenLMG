@@ -9,16 +9,22 @@ export wignerf
 export buildingstate
 
 
-function husimif(qostate,NN,name)
+function husimif(psi,JJ,NN,name)
   thetalist = [i*(pi/NN) for i in 1:NN]
   philist = [i*(2*pi/NN) for i in 1:NN]
+  psiad = conj(transpose(psi))
+  rho = psi*psiad
+  Jpop = diagonalization.matrixJp(JJ)
+  mJstate =[0.0 for i in -JJ:JJ]
+  mJstate[1] = 1.0
   open(name,"w") do io
-  for i in thetalist
-    for j in philist
-    qq = cos(j)*(2*(1-cos(i)))^(1/2)
-    pp = -sin(j)*(2*(1-cos(i)))^(1/2)
-    wig = qfuncsu2(qostate,i,j)
-    println(io,i," ",j," ",real(wig))
+  for theta in thetalist
+    for phi in philist
+      al = tan(theta/2)*exp(-im*phi)
+      alket = (1/(1+abs2(al))^(JJ))*exp(al*Jpop)*mJstate
+      albra= conj(transpose(alket))
+      hus= (1/pi)*albra*rho*alket
+      println(io,theta," ",phi," ",real(hus[1]))
     end
   end
   end
@@ -31,10 +37,8 @@ function wignerf(qostate,NN,name)
   open(name,"w") do io
   for i in thetalist
     for j in philist
-    qq = cos(j)*(2*(1-cos(i)))^(1/2)
-    pp = -sin(j)*(2*(1-cos(i)))^(1/2)
-    wig = wignersu2(qostate,i,j)
-    println(io,i," ",j," ",real(wig))
+      wig = wignersu2(qostate,i,j)
+      println(io,i," ",j," ",real(wig))
     end
   end
   end

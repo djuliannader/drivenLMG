@@ -121,9 +121,9 @@ function expectation(J,ep,gx,gy,chi,T,k)
    eigvecsfloquet=eigvecs(floquet)
    so=sortingvecf(floquet,H0,J)
    listvec=[eigvecsfloquet[i,so[k]] for i in 1:length(ev0)]
-   listvect=transpose(listvec)
+   listvect=conj(transpose(listvec))
    evf= listvect*H0*listvec
-   evalfloquet = real(evf[1])
+   evalfloquet = real(evf)
    return [ev0[k],evalfloquet]
    end
 

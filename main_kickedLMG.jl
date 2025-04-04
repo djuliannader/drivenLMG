@@ -28,7 +28,7 @@ HH0 = diagonalization.matrixH00(J,ep,gx,gy)
 ev0 = eigvals(HH0)
 Jz =  diagonalization.matrixJz(J)
 Jx =  diagonalization.matrixJx(J)
-Kop = Jx + Jz
+Kop = Jz+Jx
 Floquet = exp(-im*tau*HH0)*exp(-im*epsilon*Kop)
 fstates = eigvecs(Floquet)
 fev     = eigvals(Floquet)
@@ -40,7 +40,7 @@ println("-> Stationary state ",k,"-th obtained")
 # building floquet state for QuantumOptics library
 psi = wigner.buildingstate(listvec,J)
 # calculating Husimi and Wigner using Quantum optics library
-htest = wigner.husimif(psi,NN,name2)
+htest = wigner.husimif(listvec,J,NN,name2)
 println("-> Husimi function obtained")
 wtest = wigner.wignerf(psi,NN,name1)
 println("-> Wigner function obtained")
@@ -62,8 +62,8 @@ fexpval = real(psift*HH0*psif)
 #   println(ik/Nmax)
 #   T=T+tint
 #end
-
 #end
+
 
 println("See file resonances.dat for expectation value vs tau")
 
