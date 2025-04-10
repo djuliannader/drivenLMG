@@ -16,8 +16,9 @@ gy= 3*gx                   # LMG parameter
 epsilon = 0.01             # strength of the Kick
 tau = 2.89134              # period of the kick
 NN=100                     # Size of the Grid
-name1="wignertest_kicked.dat"     # Wigner output file
-name2="husimitest_kicked.dat"     # Husimi output file
+nfloquet = 200             # Time subintervals for Trotterization
+name1="wignertest.dat"     # Wigner output file
+name2="husimitest.dat"     # Husimi output file
 # ------------------------- ----
 
 
@@ -29,7 +30,7 @@ ev0 = eigvals(HH0)
 Jz =  diagonalization.matrixJz(J)
 Jx =  diagonalization.matrixJx(J)
 Kop = Jz+Jx
-Floquet = exp(-im*tau*HH0)*exp(-im*epsilon*Kop)
+Floquet = troterization.troter(HH0,Kop,J,nfloquet,epsilon,tau)
 fstates = eigvecs(Floquet)
 fev     = eigvals(Floquet)
 println("-> Floquet operator obtained")
@@ -50,18 +51,18 @@ psift = conj(transpose(psif))
 fexpval = real(psift*HH0*psif)
 #------------------------------------------------------
 
-
 #
-#open("resonances_kicked.dat","w") do io
+#open("resonances.dat","w") do io
 #tint=0.01
 #T = [i*tint for i in 5:400]
 #for tinst in T
-#   Floquet = exp(-im*tinst*HH0)*exp(-im*epsilon*Kop)
+#   Floquet = troterization.troter(HH0,Kop,J,nfloquet,epsilon,tinst)
 #   test1 = statistics.expectation(Floquet,HH0,J,ep,gx,gy,epsilon,tinst,k)
 #   println(io,tinst," ",test1[2]/J)
 #   println(tinst/T[length(T)])
 #end
 #end
+
 
 
 println("See file resonances.dat for expectation value vs tau")

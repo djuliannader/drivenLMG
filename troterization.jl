@@ -5,16 +5,16 @@ import diagonalization
 export troter
 
 
-function troter(H0,Jz,J::Int64,nn::Int64,b,om)
+function troter(H0,Vt,J::Int64,nn::Int64,b,T)
  pi=acos(-1)
- T=2*pi/om
+ om=2*pi/T
  dt=T/nn
 #--- building the time independent Hamiltonian ----
  # diagonal matrix elements
  U0=exp(-im*H0*dt/2)
 #--- builiding the time dependent Hamiltonian
- ddiag=[1 for i in 0:J]
- Ut=Jz
+ ddiag=[1 for i in -J:J]
+ Ut=Vt
  U=Diagonal(ddiag)
 #---- Troterization ----------------- 
  for i in 1:nn
