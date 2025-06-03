@@ -1,4 +1,4 @@
-# GrossPitaevskiiSCF
+# driven LMG
 Numerical study of the Floquet states of the Lipkin Meshkov Glick Model
 
 clone as:
