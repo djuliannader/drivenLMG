@@ -116,15 +116,16 @@ function expectation(floquet,H0,J,ep,gx,gy,chi,T,k)
    #H0=diagonalization.matrixH0(J,ep,gx,gy)
    ev0=eigvals(H0)
    #Jzdiag=[(-J+2*(jj)) for jj in 0:J]
-   #Jz=Array(Diagonal(Jzdiag))
+   Jzop=diagonalization.matrixJz(J)
    #floquet=exp(-im*chi*Jz)*exp(-im*H0*T)
    eigvecsfloquet=eigvecs(floquet)
    so=sortingvecf(floquet,H0,J)
    listvec=[eigvecsfloquet[i,so[k]] for i in 1:length(ev0)]
    listvect=conj(transpose(listvec))
-   evf= listvect*H0*listvec
+   evf = listvect*H0*listvec
+   qfiJz = 4*(listvect*(Jzop^2)*listvec - (listvect*(Jzop)*listvec)^2) 
    evalfloquet = real(evf)
-   return [ev0[k],evalfloquet]
+   return [ev0[k],evalfloquet,qfiJz]
    end
 
 #intchi=0.02

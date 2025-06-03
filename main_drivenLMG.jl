@@ -17,8 +17,8 @@ epsilon = 0.01             # strength of the Kick
 tau = 2.89134              # period of the kick
 NN=100                     # Size of the Grid
 nfloquet = 200             # Time subintervals for Trotterization
-name1="wignertest.dat"     # Wigner output file
-name2="husimitest.dat"     # Husimi output file
+name1="output/wignertest.dat"     # Wigner output file
+name2="output/husimitest.dat"     # Husimi output file
 # ------------------------- ----
 
 
@@ -52,7 +52,7 @@ fexpval = real(psift*HH0*psif)
 #------------------------------------------------------
 
 #
-#open("resonances.dat","w") do io
+#open("output/resonances.dat","w") do io
 #tint=0.01
 #T = [i*tint for i in 5:400]
 #for tinst in T
@@ -65,7 +65,7 @@ fexpval = real(psift*HH0*psif)
 
 
 
-println("See file resonances.dat for expectation value vs tau")
+println("See file output/resonances.dat for expectation value vs tau")
 
 # ----  Printing results ------------
 println("----- Results ----------")

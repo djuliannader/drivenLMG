@@ -23,7 +23,7 @@ For the Floquet states of the kicked LMG manipulate parameters at file main_kick
 julia main_kickedLMG.jl
 ```
 
-Cite as: J. Segura-Landa, ....
+Cite as: J. Segura-Landa et al, Quantum precursors to Kolmogorov-Arnold-Moser theorem in Floquet spin-J systems, arXiv:2504.13257 (2025)
 
 
 For the Floquet states of the periodically driven LMG manipulate parameters at file main_drivenLMG.jl and run as:
@@ -32,6 +32,6 @@ For the Floquet states of the periodically driven LMG manipulate parameters at f
 julia main_drivenLMG.jl
 ```
 
-Cite as: D.J. Nader, ....
+Cite as: 
 
 

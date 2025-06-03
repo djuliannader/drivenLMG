@@ -14,8 +14,8 @@ ep=1.0                     # LMG parameter
 gx=0.75                    # LMG parameter
 gy=0.0                    # LMG parameter
 NN=100                     # Size of the Grid
-name1="wignertest.dat"     # Wigner output file
-name2="husimitest.dat"     # Husimi output file
+name1="output/wignertest.dat"     # Wigner output file
+name2="output/husimitest.dat"     # Husimi output file
 # ------------------------- ----
 
 
